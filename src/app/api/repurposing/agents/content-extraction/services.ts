@@ -5,6 +5,8 @@ export class TranscriptService {
   static async getTranscript(videoId: string): Promise<TranscriptSegment[]> {
     try {
       const transcript = await YoutubeTranscript.fetchTranscript(videoId);
+      console.log("transcript:", transcript);
+
       return this.formatTranscript(transcript);
     } catch (error) {
       const errorMessage = (error as Error).message.toLowerCase();

@@ -8,10 +8,14 @@ export async function POST(request: Request) {
 
     const transcript = await getTranscript(youtube_url);
 
+    const formattedTranscript = transcript
+      .map((transcript) => transcript.text)
+      .join(", ");
+
     return Response.json(
       {
         success: true,
-        data: transcript,
+        data: formattedTranscript,
         message: "youtube transcript extracted successfully!",
       },
       { status: 200 }
