@@ -1,4 +1,4 @@
-import { getTranscript } from "./agents/content-extraction/nodes";
+import { repurposeContentGraph } from "./agents/content-extraction/graph";
 
 export async function POST(request: Request) {
   try {
@@ -6,17 +6,18 @@ export async function POST(request: Request) {
 
     console.log("response:", youtube_url);
 
-    const transcript = await getTranscript(youtube_url);
+    const config = { configurable: { thread_id: "repurposing-num-1" } };
 
-    const formattedTranscript = transcript
-      .map((transcript) => transcript.text)
-      .join(", ");
+    const { repurposed_contents } = await repurposeContentGraph.invoke(
+      { videoId: youtube_url },
+      config
+    );
 
     return Response.json(
       {
         success: true,
-        data: formattedTranscript,
-        message: "youtube transcript extracted successfully!",
+        data: repurposed_contents,
+        message: "content repurposed successfully!",
       },
       { status: 200 }
     );

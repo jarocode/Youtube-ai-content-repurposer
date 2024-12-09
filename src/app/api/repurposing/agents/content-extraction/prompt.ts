@@ -12,6 +12,12 @@ export const createLinkedPostPrompt = `You are an expert content creator on link
  5. Your post should be engaging and interesting.
  6. Add relevant hashtags to your post
 
+ NOTE: 
+  1.you are to provide only the post and not the outline
+  2.you are to provide the post in markdown format
+  
+  youtube transcript : {transcript}
+
 `;
 
 export const createTwitterPostPrompt = ` You are an experienced content creator on twitter
@@ -27,6 +33,10 @@ export const createTwitterPostPrompt = ` You are an experienced content creator 
  4. Your post should be 280 characters max.
  5. Your post should be engaging and interesting.
  6. Add relevant hashtags to your post.
+
+ NOTE: 
+  1.you are to provide only the post and not the outline
+  2.you are to provide the post in markdown format
 
  youtube transcript : {transcript}
  
@@ -51,6 +61,10 @@ export const createMediumPostPrompt = `You are an expert content creator and art
  10. Your post should be unique and not copied word for word from the youtube transcript.
 
  youtube transcript : {transcript}
+
+ NOTE: 
+  1.you are to provide only the post and not the outline
+  2.you are to provide the post in markdown format
  
  `;
 
@@ -67,6 +81,10 @@ You are given a youtube transcript and you need to create an email newsletter fr
  4. Your email newsletter should be 500 words max.
  5. Your email newsletter should be in markdown format.
  6. It should be SEO friendly
+
+ NOTE: 
+  1.you are to provide only the post and not the outline
+  2.you are to provide the post in markdown format
  
   youtube transcript : {transcript}
 `;

@@ -1,11 +1,10 @@
-import { YoutubeTranscript } from "youtube-transcript";
+import { TranscriptResponse, YoutubeTranscript } from "youtube-transcript";
 import { TranscriptError, TranscriptSegment } from "./types";
 
 export class TranscriptService {
   static async getTranscript(videoId: string): Promise<TranscriptSegment[]> {
     try {
       const transcript = await YoutubeTranscript.fetchTranscript(videoId);
-      console.log("transcript:", transcript);
 
       return this.formatTranscript(transcript);
     } catch (error) {
@@ -29,7 +28,9 @@ export class TranscriptService {
     }
   }
 
-  private static formatTranscript(transcript: any[]): TranscriptSegment[] {
+  private static formatTranscript(
+    transcript: TranscriptResponse[]
+  ): TranscriptSegment[] {
     if (!transcript || transcript.length === 0) {
       throw new TranscriptError(
         "Transcript is empty or invalid",
@@ -39,7 +40,7 @@ export class TranscriptService {
 
     return transcript.map((item) => ({
       text: item.text,
-      start: item.start,
+      start: item.offset,
       duration: item.duration,
     }));
   }

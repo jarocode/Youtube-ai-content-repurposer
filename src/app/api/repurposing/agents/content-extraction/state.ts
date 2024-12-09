@@ -1,11 +1,10 @@
 import { Annotation } from "@langchain/langgraph";
 
-export interface Analyst {
-  affiliation: string;
-  name: string;
-  role: string;
-  description: string;
-  persona: string;
+export interface RepurposedContents {
+  linkedin_post: string;
+  x_post: string;
+  medium_post: string;
+  email_newsletter: string;
 }
 
 export const RepurposeContentState = Annotation.Root({
@@ -14,4 +13,6 @@ export const RepurposeContentState = Annotation.Root({
   linkedin_post: Annotation<string>,
   x_post: Annotation<string>,
   medium_post: Annotation<string>,
+  email_newsletter: Annotation<string>,
+  repurposed_contents: Annotation<RepurposedContents>,
 });
